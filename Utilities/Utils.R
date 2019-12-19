@@ -14,6 +14,9 @@ DownLoadAndLoadData<- function(datasetdate,surl){
   {
     dir.create(datasetdate)
   }
+  if(!dir.exists(file.path(datasetdate,"Figures"))){
+    dir.create(file.path(datasetdate,"Figures"))
+  }
   if (!dir.exists(file.path(datasetdate,"Data")))
   {
     dir.create(file.path(datasetdate,"Data"))
