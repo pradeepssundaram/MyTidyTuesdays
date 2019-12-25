@@ -19,4 +19,4 @@ clyrics<-christmas_lyrics %>%
   group_by(artist,songid) %>% 
   summarise(cons=reduce(lyric,str_c,sep = "\n"))
 
-##
+###
