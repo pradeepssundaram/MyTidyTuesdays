@@ -8,7 +8,7 @@ getfilename<- function(url)
   fname
 }
 
-DownLoadAndLoadData<- function(datasetdate,surl){
+DownLoadAndLoadData<- function(datasetdate,surl,type="csv"){
 
   if (!dir.exists(datasetdate))
   {
@@ -25,12 +25,24 @@ DownLoadAndLoadData<- function(datasetdate,surl){
   }
   filename<-file.path(datasetdate,"Data",getfilename(surl))
   if(!file.exists(filename)){
-    dframe<-read_csv(surl)
+    if(type=="csv")
+    {dframe<-read_csv(surl)
     write_csv(dframe,filename,append = FALSE)
-    return (dframe)  
+    return (dframe)} else{
+      dframe<-read_tsv(surl)
+      write_tsv(dframe,filename,append = FALSE)
+      return (dframe)
+    }
+      
   }else{
-    dframe<-read_csv(filename)
-    return (dframe)
+    if (type=="csv"){
+      dframe<-read_csv(filename)
+      return (dframe)
+    }else{
+      dframe<-read_tsv(filename)
+      return (dframe)
+    }
+    
   }
   
   
