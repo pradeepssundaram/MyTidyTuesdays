@@ -29,3 +29,4 @@ ageplot<-ggplot(data = agedistribution) +
                )
 
 ggsave(filename = file.path(datasetdate,"Figures","AgeDist.png"),ageplot)
+  ageplot
